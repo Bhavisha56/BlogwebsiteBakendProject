@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: #4b5c7d95;
+        }
+
+        .nav {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            justify-content: center;
+            align-items: center;
+            gap: 40rem
+        }
+
+        .logo {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+        }
+
+        .sign button {
+            background: rgba(255, 68, 0, 0.689);
+            color: white;
+            border: 2px solid black;
+            font-size: 1rem;
+            width: 120px;
+            border-radius: 10px;
+            height: 40px;
+            cursor: pointer;
+        }
+
+        .sign button:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 68, 0, 0.418);
+        }
+
+        .title {
+            font-size: 2rem;
+            background-color: #1b263b;
+            border-radius: 10px;
+            border: 3px solid black;
+            color: white;
+            box-shadow: 5px 5px 10px gray;
+            /* (x=5px, y=5px, blur=10px, color=gray) */
+            width: 300px;
+        }
+
+        .title::placeholder {
+            color: white;
+            /* Change to your desired color */
+            opacity: 0.4;
+
+            /* Ensure full visibility */
+        }
+
+        .formclass {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px;
+        }
+
+        .bloglist {
+            padding: 3rem;
+        }
+
+        .content {
+            height: 5rem;
+            box-shadow: 5px 5px 10px gray;
+            /* (x=5px, y=5px, blur=10px, color=gray) */
+            background-color: #1b263b;
+            color: white;
+            border-radius: 10px;
+            padding: 10px;
+            resize: none;
+        }
+
+        .submit {
+            width: 6.3rem;
+            border: 2px solid black;
+            background-color: orangered;
+            color: white;
+            height: 2rem;
+            cursor: pointer;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <div class="logo">
+            <svg class="blog" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
+                viewBox="0 0 30 30">
+                <path
+                    d="M 6 4 C 4.895 4 4 4.895 4 6 L 4 24 C 4 25.105 4.895 26 6 26 L 24 26 C 25.105 26 26 25.105 26 24 L 26 6 C 26 4.895 25.105 4 24 4 L 6 4 z M 12.308594 8 L 15 8 C 17.38 8 19.325594 9.9567969 19.308594 12.341797 C 19.303594 12.923797 19.802766 13.384766 20.384766 13.384766 L 20.923828 13.384766 C 21.518828 13.384766 22 13.867891 22 14.462891 L 22 17.691406 C 22 20.061406 20.061406 22 17.691406 22 L 12.306641 22 C 9.9376406 22 8 20.061406 8 17.691406 L 8 15 L 8 12.308594 C 8 9.9385938 9.9385938 8 12.308594 8 z M 12.308594 11.230469 C 11.716594 11.230469 11.230469 11.716594 11.230469 12.308594 C 11.230469 12.900594 11.716594 13.384766 12.308594 13.384766 L 15 13.384766 C 15.592 13.384766 16.076172 12.900594 16.076172 12.308594 C 16.076172 11.716594 15.592 11.230469 15 11.230469 L 12.308594 11.230469 z M 12.306641 16.615234 C 11.714641 16.615234 11.230469 17.099406 11.230469 17.691406 C 11.230469 18.283406 11.714641 18.769531 12.306641 18.769531 L 17.691406 18.769531 C 18.283406 18.769531 18.769531 18.283406 18.769531 17.691406 C 18.769531 17.099406 18.284406 16.615234 17.691406 16.615234 L 12.306641 16.615234 z">
+                </path>
+            </svg>
+            <h1>Blogger</h1>
+        </div>
+        <div class="sign">
+            <a href="/signin"> <button>Logout</button></a>
+        </div>
+    </div>
+    <div class="container bg-red-500">
+        <div class="bloglist">
+            <form action="/edit/<%= blog.author %>/<%= blog._id %>" method="post" class="formclass bg-red">
+                <input class="title" type="text" name="title" placeholder="Enter your title..."
+                    value="<%= blog.title %>">
+                <textarea class="content" name="content"><%= blog.content %></textarea>
+                <input class="submit" type="submit" value="Update Blog">
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

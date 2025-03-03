@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         body{
+            background: #4b5c7d95;
+        }
+        .nav {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            justify-content: center;
+            align-items: center;
+            gap: 40rem
+        }
+
+        .logo {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+        }
+
+        .sign button {
+            background: rgba(255, 68, 0, 0.689);
+            color: white;
+            border: 2px solid black;
+            font-size: 1rem;
+            width: 120px;
+            border-radius: 10px;
+            height: 70px;
+            cursor: pointer;
+        }
+
+        .sign button:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 68, 0, 0.418);
+        }
+
+        .box {
+            text-align: center;
+            padding: 50px;
+            color: black;
+        }
+
+        .box h1 {
+            font-size: 3rem;
+
+        }
+
+        .box h3 {
+            font-size: 1.5rem;
+            font-style: oblique;
+            text-decoration: underline;
+        }
+
+        .box button {
+            width: 120px;
+            border: none;
+            font-size: large;
+            height: 50px;
+            color: white;
+            border-radius: 10px;
+            background-color: rgba(236, 156, 9, 0.822);
+            cursor: pointer;
+        }
+
+        .box button:hover {
+            transform: translateY(-1px);
+        }
+
+        .cards {
+
+            margin-left: 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            justify-content: center;
+            align-items: center;
+            gap: 200px;
+
+        }
+
+        .card1 {
+            width: 300px;
+            height: 250px;
+            border-radius: 10px;
+            background-color: aliceblue;
+            border: 2px solid black;
+
+        }
+
+        .card1 h1 {
+            background: white;
+            text-align: center;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .card1 p {
+            background: white;
+            padding: 5px;
+            text-align: center;
+            font-size: 12px;
+            border-radius: 10px;
+            font-weight: 400;
+            font-family: cursive;
+            cursor: pointer;
+        }
+
+        .card1 button:hover {
+            background-color: orangered;
+        }
+
+
+
+        .readmore {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            margin-left: 100px;
+            color: black;
+            border-radius: 10px;
+            height: 30px;
+            border: 2px solid black;
+        }
+        .hp{
+            padding: 5px;
+            color: black;
+            text-decoration: none;
+            font-size: 1.4rem;
+            margin-left: 1.3rem;
+            margin-top: 1px;
+            /* text-decoration: ; */
+            
+        }
+        .logouut h1{
+            /* background: rgba(134, 60, 33, 0.689); */
+            margin-left: 1px;;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <div class="logo">
+            <svg class="blog" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
+                viewBox="0 0 30 30">
+                <path
+                    d="M 6 4 C 4.895 4 4 4.895 4 6 L 4 24 C 4 25.105 4.895 26 6 26 L 24 26 C 25.105 26 26 25.105 26 24 L 26 6 C 26 4.895 25.105 4 24 4 L 6 4 z M 12.308594 8 L 15 8 C 17.38 8 19.325594 9.9567969 19.308594 12.341797 C 19.303594 12.923797 19.802766 13.384766 20.384766 13.384766 L 20.923828 13.384766 C 21.518828 13.384766 22 13.867891 22 14.462891 L 22 17.691406 C 22 20.061406 20.061406 22 17.691406 22 L 12.306641 22 C 9.9376406 22 8 20.061406 8 17.691406 L 8 15 L 8 12.308594 C 8 9.9385938 9.9385938 8 12.308594 8 z M 12.308594 11.230469 C 11.716594 11.230469 11.230469 11.716594 11.230469 12.308594 C 11.230469 12.900594 11.716594 13.384766 12.308594 13.384766 L 15 13.384766 C 15.592 13.384766 16.076172 12.900594 16.076172 12.308594 C 16.076172 11.716594 15.592 11.230469 15 11.230469 L 12.308594 11.230469 z M 12.306641 16.615234 C 11.714641 16.615234 11.230469 17.099406 11.230469 17.691406 C 11.230469 18.283406 11.714641 18.769531 12.306641 18.769531 L 17.691406 18.769531 C 18.283406 18.769531 18.769531 18.283406 18.769531 17.691406 C 18.769531 17.099406 18.284406 16.615234 17.691406 16.615234 L 12.306641 16.615234 z">
+                </path>
+            </svg>
+            <h1>Blogger</h1>
+        </div>
+        <div class="sign">
+            <div class="logouut">
+                <a href="/logout"> <button>Logout <h1 class="hp"><%=name%></h1></button></a>
+            </div>
+        </div>
+    </div>
+    <div class="mainbox">
+        <div class="box">
+            <h1>Publish your passions, your way</h1>
+            <h3>Create a unique and beautiful blog easily.</h3>
+            <a href="/users/<%=userId%>"><button>Create Blog</button></a>
+        </div>
+
+    </div>
+
+    <div class="cards">
+        <div class="card1">
+            <h1>Cooking Blog</h1>
+            <p>Welcome to Tasty Bites! 🍽️
+                Discover delicious and easy-to-make recipes for every occasion. Whether you're a beginner or a pro,
+                our
+                step-by-step guides will help you cook mouthwatering dishes effortlessly. From quick snacks to
+                gourmet
+                meals, explore flavors that bring joy to your kitchen. Stay tuned for tasty tips, tricks, and secret
+                ingredients! Happy cooking! 🍳✨</p>
+            <button class="readmore">Read More</button>
+        </div>
+        <div class="card1">
+            <h1>Coding Blog</h1>
+            <p>Coding is more than just solving problems—it’s about writing clean, efficient, and maintainable code.
+                Whether you're a beginner learning the basics or a developer mastering best practices, structured
+                and
+                readable code is key. Always keep it simple, follow DRY (Don't Repeat Yourself), and write
+                meaningful
+                comments. Remember, good code isn’t just for machines—it’s for humans too! 🚀👨‍💻</p>
+            <button class="readmore">Read More</button>
+
+        </div>
+        <div class="card1">
+            <h1>Travel Blog</h1>
+            <p>Traveling isn’t just about destinations; it’s about the experiences, cultures, and stories that shape
+                us.
+                From serene mountain escapes to bustling city streets, every place has a unique charm waiting to be
+                explored. Whether you're a solo traveler or an adventure seeker, there's always a new journey
+                calling.
+                Pack your bags, embrace the unknown, and let the world surprise you! ✈️🌎</p>
+            <button class="readmore">Read More</button>
+        </div>
+    </div>
+
+</body>
+
+</html>

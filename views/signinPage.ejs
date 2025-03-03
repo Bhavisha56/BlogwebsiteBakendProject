@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: #4b5c7d95;
+        }
+
+        .main .box {
+            width: 400px;
+            height: 400px;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-left: 550px;
+            margin-top: 200px;
+            box-shadow: 5px 5px 10px gray;
+        }
+
+        .box form {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            text-align: center;
+            margin-left: 100px;
+        }
+
+        .box h1 {
+            text-align: center;
+        }
+
+        .box .in {
+            width: 13rem;
+            font-size: large;
+            height: 2rem;
+            border-radius: 10px;
+            border: 2px solid black;
+        }
+
+        .box .btn {
+
+            width: 13rem;
+            font-size: large;
+            height: 2rem;
+            border-radius: 10px;
+            border: 2px solid black;
+            background-color: royalblue;
+        }
+
+        .box .btn:hover {
+            background-color: rgb(103, 130, 213);
+            cursor: pointer;
+        }
+
+        .main img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .box h4 {
+            text-align: center;
+        }
+
+        .signup {
+            border-radius: 10px;
+
+            background-color: crimson;
+            border: 2px solid black;
+            width: 70px;
+            height: 20px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .signup button {
+            color: black;
+            text-decoration: none;
+        }
+
+        .signup:hover {
+            background-color: rgb(186, 14, 48);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="box">
+            <h1>Welcome to Blogger</h1>
+            <form action="/Signin" id="formid" method="post">
+                <input class="in" type="email" name="email" placeholder="email" id="email">
+                <span class="error" id="nameError"></span>
+
+                <input class="in" type="password" name="password" placeholder="password" id="password">
+                <span class="error" id="nameError"></span>
+
+                <input class="btn" type="submit" placeholder="submit" id="">
+            </form>
+            <h4>New User?<a href="/Signup"><button class="signup">Signup</button></a></h4>
+        </div>
+    </div>
+
+
+    <script src="../public/javascripts/singinScript.js"></script>
+</body>
+
+</html>
