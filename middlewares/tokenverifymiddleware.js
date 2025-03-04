@@ -1,33 +1,31 @@
-const express = require('express');
-const app = express();
-const cookieParser = require("cookie-parser");
-const jwt = require("jsonwebtoken");
-const usermodel = require('../models/usermodel');
-const SECRET_KEY = "viceCity"
+import jwt from "jsonwebtoken";
+import { UserModel } from "../models/usermodel.js";
 
+export async function userverify(req, res, next) {
 
+    if (!process.env.JWT_KEY) {
+        process.exit(1);
+    }
 
-app.use(cookieParser());
+    const SECRET_KEY = process.env.JWT_KEY;
 
-async function userverify(req, res, next) {
     let token = req.cookies.token;
     if (!token) {
         return res.send("Access denied")
     }
-    
-    jwt.verify(token,SECRET_KEY,async(err,decoded)=>{
-        if(err){
+
+    jwt.verify(token, SECRET_KEY, async (err, decoded) => {
+        if (err) {
             return res.send("Invalid token");
         }
 
-        const user=await usermodel.findById(decoded.userId);
-        if(!user){
+        const user = await UserModel.findById(decoded.userId);
+        if (!user) {
             return res.send("Some issue while fetching your details");
         }
-        req.user={userId:decoded.userId,name:user.name};
+        req.user = { userId: decoded.userId, name: user.name };
         next();
     })
-   
+
 }
 
-module.exports = userverify;

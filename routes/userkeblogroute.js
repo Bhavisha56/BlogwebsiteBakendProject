@@ -1,9 +1,9 @@
-const express = require("express");
-const Router = express.Router();
-const userverify = require("../middlewares/tokenverifymiddleware");
-const blogmodel = require("../models/blogmodel");
+import { Router } from "express";
+const router = Router();
+import { userverify } from "../middlewares/tokenverifymiddleware.js"
+import { BlogModel } from "../models/blogmodel.js"
 
-Router.get("/users/:id", userverify, async (req, res) => {
+router.get("/users/:id", userverify, async (req, res) => {
     const { id } = req.params;
 
     if (id !== req.user.userId) {
@@ -11,7 +11,10 @@ Router.get("/users/:id", userverify, async (req, res) => {
     }
 
     try {
-        const blogs = await blogmodel.find({ author: id }).populate("author");
+        const blogs = await BlogModel
+            .find({ author: id })
+            .populate("author")
+            .sort({ createdAt: -1 });;
 
         res.render("userlistofblogs", {
             userId: id,
@@ -24,15 +27,15 @@ Router.get("/users/:id", userverify, async (req, res) => {
     }
 });
 
-Router.get("/delete/:blogId", userverify, async (req, res) => {
+router.get("/delete/:blogId", userverify, async (req, res) => {
     const { blogId } = req.params;
     try {
         // Find the blog and check authorization
-        const blog = await blogmodel.findById(blogId);
+        const blog = await BlogModel.findById(blogId);
         if (!blog) return res.status(404).send("Blog not found");
 
         // Delete the blog
-        await blogmodel.findByIdAndDelete(blogId)
+        await BlogModel.findByIdAndDelete(blogId)
 
         res.redirect(`/users/${req.user.userId}`); // Redirect to the blog list after deletion
     } catch (error) {
@@ -41,11 +44,11 @@ Router.get("/delete/:blogId", userverify, async (req, res) => {
     }
 });
 
-Router.get("/edit/:blogId", userverify, async (req, res) => {
+router.get("/edit/:blogId", userverify, async (req, res) => {
     const { blogId } = req.params;
     try {
         // Find the blog and check authorization
-        const blog = await blogmodel.findById(blogId);
+        const blog = await BlogModel.findById(blogId);
         if (!blog) return res.status(404).send("Blog not found");
 
 
@@ -56,10 +59,13 @@ Router.get("/edit/:blogId", userverify, async (req, res) => {
     }
 })
 
-Router.post("/edit/:userId/:blogId", userverify, async (req, res) => {
+router.post("/edit/:userId/:blogId", userverify, async (req, res) => {
     const { blogId, userId } = req.params;
-    const { title, content } = req.body
-    await blogmodel.findByIdAndUpdate(blogId, {
+    const { title, content } = req.body;
+    if ([title, content].some((field) => (typeof field !== "string" || field.trim() === ""))) {
+        return res.send("Invalid new data.")
+    }
+    await BlogModel.findByIdAndUpdate(blogId, {
         title,
         content,
     })
@@ -67,4 +73,4 @@ Router.post("/edit/:userId/:blogId", userverify, async (req, res) => {
 
 });
 
-module.exports = Router;
+export default router;

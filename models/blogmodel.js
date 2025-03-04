@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const blogSchema = new mongoose.Schema({
     title: {
@@ -9,17 +9,14 @@ const blogSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    author: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "user",
-            required: true,
-        }
-    ],
-    createdAt: {
-        type: Date,
-        default: Date.now
+    author:
+    {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "user",
+        required: true,
     }
+}, {
+    timestamps: true
 })
 
-module.exports = mongoose.model("userkablog", blogSchema);
+export const BlogModel = mongoose.model("blog", blogSchema);

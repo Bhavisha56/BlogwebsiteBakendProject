@@ -1,9 +1,9 @@
-const express=require("express");
-const Router=express.Router();
+import { Router } from "express";
+const router = Router();
 
 
-Router.get("/",(req,res)=>{
+router.get("/", (req, res) => {
     res.render("homePage");
 })
 
-module.exports=Router;
+export default router;

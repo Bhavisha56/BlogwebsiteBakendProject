@@ -1,8 +1,8 @@
-const express = require("express");
-const Router = express.Router();
-const userverify = require("../middlewares/tokenverifymiddleware")
+import { Router } from "express";
+const router = Router();
+import { userverify } from "../middlewares/tokenverifymiddleware.js";
 
-Router.get("/user/:id", userverify, (req, res) => {
+router.get("/user/:id", userverify, (req, res) => {
     const { id } = req.params;
 
     if (id !== req.user.userId) {
@@ -13,4 +13,4 @@ Router.get("/user/:id", userverify, (req, res) => {
 
 })
 
-module.exports = Router;
+export default router;
